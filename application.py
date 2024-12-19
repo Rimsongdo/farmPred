@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 
-# Initialize the Flask application
+
 application = Flask(__name__)
 
 # Load the trained model
