@@ -1,7 +1,7 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
-
+import os
 
 application = Flask(__name__)
 
@@ -28,5 +28,6 @@ def predict():
         return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
-    # Run the app on the default Flask port (5000)
-    application.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))
+    application.run(host="0.0.0.0", port=port)
+   
