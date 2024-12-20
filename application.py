@@ -2,8 +2,15 @@ from flask import Flask, request, jsonify
 import joblib
 import numpy as np
 import os
+from flask_cors import CORS  # Import CORS
 
 application = Flask(__name__)
+
+# Enable CORS for all routes in the application
+CORS(application)
+
+# Alternatively, you can allow specific origins, for example:
+# CORS(application, origins=["https://your-frontend-domain.com"])
 
 # Load the trained model
 model = joblib.load('random_forest_model.pkl')
@@ -30,4 +37,3 @@ def predict():
 if __name__ == '__main__':
     port = int(os.environ.get("PORT", 5000))
     application.run(host="0.0.0.0", port=port)
-   
